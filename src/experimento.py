@@ -6,6 +6,7 @@ def main():
     for result in results: 
         print(f'{result[0]}: {result[1]}')
     generate_graphic(results)
+    generate_document(results)
 
 
 def results_experiment():
@@ -39,6 +40,13 @@ def generate_graphic(results):
         y_values.append(result[1])
     fig.line(x_values, y_values, width=5)
     show(fig)
+
+
+def generate_document(results):
+    new_file = open("./../generated_files/results.txt", "w")
+    for result in results:
+        new_file.write(str(result[0]) + ", " + str(result[1]) + "\n")
+    new_file.close()
 
 
 if __name__ == '__main__':
